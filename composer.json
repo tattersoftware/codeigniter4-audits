@@ -1,0 +1,38 @@
+{
+	"name": "tatter/permits",
+	"description": "Lightweight object logging for CodeIgniter 4",
+	"keywords": [
+		"codeigniter",
+		"codeigniter4",
+		"audit",
+		"logging",
+		"events"
+	],
+	"homepage": "https://github.com/tattersoftware/codeigniter4-audits",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Matthew Gatner",
+			"email": "mgatner@tattersoftware.com",
+			"homepage": "https://tattersoftware.com",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php" : "^7.0"
+	},
+	"require-dev": {
+		"codeigniter4/framework": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"Tatter\\Audits\\": "src"
+		}
+	},
+	"scripts": {
+		"post-update-cmd": [
+			"composer dump-autoload",
+			"php spark migrate:latest -n all"
+		]
+	}
+}
