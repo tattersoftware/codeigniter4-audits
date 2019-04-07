@@ -75,6 +75,6 @@ The Audits library will create basic logs of each event in the `audits` table, f
 ```
 | id | source | source_id | user_id | event  | summary  |          created_at |
 +----+--------+-----------+---------+--------+----------+---------------------+
-| 10 | sites  |         9 |      27 | create | 2 rows   | 2019-04-05 15:58:40 |
-| 11 | jobs   |         9 |      10 | update | 5 rows   | 2019-04-05 16:01:35 |
+| 10 | sites  |        27 |       9 | create | 2 rows   | 2019-04-05 15:58:40 |
+| 11 | jobs   |        10 |       9 | update | 5 rows   | 2019-04-05 16:01:35 |
 ````
