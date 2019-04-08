@@ -41,13 +41,6 @@ class Audits
 	protected $config;
 
 	/**
-	 * The main database connection, needed to check audits table.
-	 *
-	 * @var ConnectionInterface
-	 */
-	protected $db;
-
-	/**
 	 * The active user session.
 	 *
 	 * @var \CodeIgniter\Session\Session
