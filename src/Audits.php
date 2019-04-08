@@ -41,7 +41,7 @@ class Audits
 	protected $config;
 
 	/**
-	 * The main database connection, needed to check permits table.
+	 * The main database connection, needed to check audits table.
 	 *
 	 * @var ConnectionInterface
 	 */
