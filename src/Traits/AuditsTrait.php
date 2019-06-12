@@ -52,6 +52,8 @@ trait AuditsTrait
 			'summary'   => count($data['data']) . ' rows',
 		];
 		Services::audits()->add($audit);
+		
+		return $data;
 	}
 	
 	// record successful update events
@@ -64,6 +66,8 @@ trait AuditsTrait
 			'summary'   => count($data['data']) . ' rows',
 		];
 		Services::audits()->add($audit);
+		
+		return $data;
 	}
 	
 	// record successful delete events
@@ -84,5 +88,7 @@ trait AuditsTrait
 			$audit['source_id'] = $id;
 			$audits->add($audit);
 		endforeach;
+		
+		return $data;
 	}
 }
