@@ -85,7 +85,7 @@ class Audits
 	public function save()
 	{
 		if (empty($this->queue))
-			return false;
+			return;
 
 		$audits = new AuditModel();
 		$audits->insertBatch($this->queue);
