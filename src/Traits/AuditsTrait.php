@@ -75,6 +75,8 @@ trait AuditsTrait
 	{
 		if (! $data['result'])
 			return false;
+		if (empty($data['id']))
+			return false;
 
 		$audit = [
 			'source'    => $this->table,
