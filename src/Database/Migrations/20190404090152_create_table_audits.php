@@ -14,7 +14,6 @@ class Migration_create_table_audits extends Migration
 			'event'         => ['type' => 'VARCHAR', 'constraint' => 31],
 			'summary'       => ['type' => 'VARCHAR', 'constraint' => 255],
 			'created_at'    => ['type' => 'DATETIME', 'null' => true],
-			'updated_at'    => ['type' => 'DATETIME', 'null' => true],
 		];
 		
 		$this->forge->addField('id');
