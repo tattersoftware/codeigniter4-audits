@@ -19,7 +19,7 @@
 		}
 	],
 	"require": {
-		"php" : "^7.0"
+		"php" : ">=7.2"
 	},
 	"require-dev": {
 		"codeigniter4/framework": "dev-master"
@@ -31,8 +31,7 @@
 	},
 	"scripts": {
 		"post-update-cmd": [
-			"composer dump-autoload",
-			"php spark migrate:latest -n all"
+			"composer dump-autoload"
 		]
 	}
 }

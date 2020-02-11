@@ -10,13 +10,11 @@
 *
 ***/
 
-use CodeIgniter\Config\BaseConfig;
-
 class Audits extends \Tatter\Audits\Config\Audits
 {
-	// key in $_SESSION that contains the integer ID of a logged in user
+	// Session key in that contains the integer ID of a logged in user
 	public $sessionUserId = "logged_in";
 
-	// whether to continue instead of throwing exceptions
+	// Whether to continue instead of throwing exceptions
 	public $silent = true;
 }
