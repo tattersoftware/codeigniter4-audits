@@ -49,7 +49,7 @@ trait AuditsTrait
 			'source'    => $this->table,
 			'source_id' => $data['result']->connID->insert_id,
 			'event'     => 'insert',
-			'summary'   => count($data['data']) . ' rows',
+			'summary'   => count($data['data']) . ' fields',
 		];
 		Services::audits()->add($audit);
 		
@@ -63,7 +63,7 @@ trait AuditsTrait
 			'source'    => $this->table,
 			'source_id' => $data['id'],
 			'event'     => 'update',
-			'summary'   => count($data['data']) . ' rows',
+			'summary'   => count($data['data']) . ' fields',
 		];
 		Services::audits()->add($audit);
 		
