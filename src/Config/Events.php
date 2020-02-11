@@ -3,5 +3,5 @@
 use CodeIgniter\Events\Events;
 
 Events::on('post_system', function () {
-	services('audits')->save();
+	service('audits')->save();
 });
