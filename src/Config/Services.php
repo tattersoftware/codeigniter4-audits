@@ -1,8 +1,8 @@
 <?php namespace Tatter\Audits\Config;
 
-use CodeIgniter\Config\BaseService;
+use Tatter\Audits\Audits;
 
-class Services extends BaseService
+class Services extends \Config\Services
 {
     public static function audits(BaseConfig $config = null, bool $getShared = true)
     {
@@ -17,6 +17,6 @@ class Services extends BaseService
 			$config = config('Audits');
 		}
 
-		return new \Tatter\Audits\Audits($config);
+		return new Audits($config);
 	}
 }

@@ -5,7 +5,7 @@ Lightweight object logging for CodeIgniter 4
 
 1. Install with Composer: `> composer require tatter/audits`
 2. Update the database: `> php spark migrate -all`
-3. Setup your models:
+3. Set up your models:
 
 ```
 class JobModel extends Model
