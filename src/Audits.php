@@ -46,6 +46,16 @@ class Audits
 	}
 
 	/**
+	 * Return the current queue (mostly for testing)
+	 *
+	 * @return array
+	 */
+	public function getQueue(): array
+	{
+		return $this->queue;
+	}
+
+	/**
 	 * Add an audit row to the queue
 	 *
 	 * @param array|null  The row to cache for insert

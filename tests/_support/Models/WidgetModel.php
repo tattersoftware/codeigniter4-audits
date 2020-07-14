@@ -28,13 +28,13 @@ class WidgetModel extends Model
 	 *
 	 * @return stdClass
 	 */
-	public function fake(Generator &$faker): stdClass
+	public function fake(Generator &$faker): object
 	{
-		return new stdClass([
+		return (object) [
 			'name'    => $faker->catchPhrase,
 			'uid'     => $faker->word,
 			'summary' => $faker->sentence,
-		]);
+		];
 	}
 
 	/**
