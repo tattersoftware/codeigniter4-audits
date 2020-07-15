@@ -47,7 +47,7 @@ trait AuditsTrait
 
 		$audit = [
 			'source'    => $this->table,
-			'source_id' => $data['result']->connID->insert_id,
+			'source_id' => $this->db->insertID(),
 			'event'     => 'insert',
 			'summary'   => count($data['data']) . ' fields',
 		];
