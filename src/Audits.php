@@ -1,7 +1,7 @@
 <?php namespace Tatter\Audits;
 
-use CodeIgniter\Config\BaseConfig;
 use Tatter\Audits\Models\AuditModel;
+use Tatter\Audits\Config\Audits as AuditsConfig;
 
 /*** CLASS ***/
 class Audits
@@ -9,7 +9,7 @@ class Audits
 	/**
 	 * Our configuration instance.
 	 *
-	 * @var \Tatter\Audits\Config\Audits
+	 * @var AuditsConfig
 	 */
 	protected $config;
 	
@@ -23,9 +23,9 @@ class Audits
 	/**
 	 * Store the configuration
 	 *
-	 * @param BaseConfig $config  The Audits configuration to use
+	 * @param AuditsConfig $config  The Audits configuration to use
 	 */
-	public function __construct(BaseConfig $config)
+	public function __construct(AuditsConfig $config)
 	{		
 		$this->config = $config;
 	}
@@ -58,7 +58,7 @@ class Audits
 	/**
 	 * Add an audit row to the queue
 	 *
-	 * @param array|null  The row to cache for insert
+	 * @param array|null $audit The row to cache for insert
 	 */
 	public function add(array $audit = null)
 	{

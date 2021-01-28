@@ -6,8 +6,6 @@ class CreateTestTables extends Migration
 {
 	public function up()
 	{
-		$this->db->disableForeignKeyChecks();
-		
 		// Widgets
 		$fields = [
 			'name'           => ['type' => 'varchar', 'constraint' => 31],
@@ -27,16 +25,10 @@ class CreateTestTables extends Migration
 		$this->forge->addKey('created_at');
 		
 		$this->forge->createTable('widgets');
-
-		$this->db->enableForeignKeyChecks();
 	}
 
 	public function down()
 	{
-		$this->db->disableForeignKeyChecks();
-		
 		$this->forge->dropTable('widgets');
-		
-		$this->db->enableForeignKeyChecks();
 	}
 }
