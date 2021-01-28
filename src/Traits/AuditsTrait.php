@@ -1,40 +1,61 @@
 <?php namespace Tatter\Audits\Traits;
 
-use CodeIgniter\Config\Services;
 use Tatter\Audits\Models\AuditModel;
 
 /*** CLASS ***/
 trait AuditsTrait
 {
-	// takes an array of model $returnTypes and returns an array of Audits, arranged by object and event
-	// optionally filter by $events (string or array of strings)
+	/**
+	 * Takes an array of model $returnTypes
+	 * and returns an array of Audits,
+	 * arranged by object and event.
+	 * Optionally filter by $events
+	 * (string or array of strings).
+	 *
+	 * @param array $objects
+	 * @param array|string|null $events
+	 *
+	 * @internal Due to a typo this function has never worked in a released version.
+	 *           It will be refactored soon without announcing a new major release
+	 *           so do not build on the signature or functionality.
+	 */
 	public function getAudits(array $objects, $events = null): array
 	{
 		if (empty($objects))
-			return null;
-	
-		// get the primary keys from the objects
+		{
+			return [];
+		}
+
+		// Get the primary keys from the objects
 		$objectIds = array_column($objects, $this->primaryKey);
-		
-		$audits = new AuditModel();
-		$query = $query->where('source', $this->table)
-			->whereIn('source_id', $objectIds);
+
+		// Start the query
+		$query = model(AuditModel::class)->where('source', $this->table)->whereIn('source_id', $objectIds);
+
 		if (is_string($events))
+		{
 			$query = $query->where('event', $events);
+		}
 		elseif (is_array($events))
+		{
 			$query = $query->whereIn('event', $events);
+		}
 		
-		// index by objectId, event
-		$array = [ ];
-		while ($audit = $query->getUnbufferedRow()):
+		// Index by objectId, event
+		$array = [];
+		while ($audit = $query->getUnbufferedRow())
+		{
 			if (empty($array[$audit->{$this->primaryKey}]))
-				$array[$audit->{$this->primaryKey}] = [ ];
-				
+			{
+				$array[$audit->{$this->primaryKey}] = [];
+			}	
 			if (empty($array[$audit->{$this->primaryKey}][$audit->event]))
-				$array[$audit->{$this->primaryKey}][$audit->event] = [ ];
+			{
+				$array[$audit->{$this->primaryKey}][$audit->event] = [];
+			}
 			
 			$array[$audit->{$this->primaryKey}][$audit->event][] = $audit;
-		endwhile;
+		}
 	
 		return $array;
 	}
@@ -47,11 +68,11 @@ trait AuditsTrait
 
 		$audit = [
 			'source'    => $this->table,
-			'source_id' => $this->db->insertID(),
+			'source_id' => $this->db->insertID(), // @phpstan-ignore-line
 			'event'     => 'insert',
 			'summary'   => count($data['data']) . ' fields',
 		];
-		Services::audits()->add($audit);
+		service('audits')->add($audit);
 		
 		return $data;
 	}
@@ -65,7 +86,7 @@ trait AuditsTrait
 			'event'     => 'update',
 			'summary'   => count($data['data']) . ' fields',
 		];
-		Services::audits()->add($audit);
+		service('audits')->add($audit);
 		
 		return $data;
 	}
@@ -85,7 +106,7 @@ trait AuditsTrait
 		];
 		
 		// add an entry for each ID
-		$audits = Services::audits();
+		$audits = service('audits');
 		foreach ($data['id'] as $id):
 			$audit['source_id'] = $id;
 			$audits->add($audit);

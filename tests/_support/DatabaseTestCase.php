@@ -4,6 +4,7 @@ use CodeIgniter\Test\CIDatabaseTestCase;
 use CodeIgniter\Test\Fabricator;
 use Config\Services;
 use Tatter\Audits\Audits;
+use Tatter\Audits\Config\Audits as AuditsConfig;
 use Tests\Support\Models\WidgetModel;
 
 class DatabaseTestCase extends CIDatabaseTestCase
@@ -18,21 +19,21 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	/**
 	 * Our configuration
 	 *
-	 * @var Tatter\Audits\Config\Audits
+	 * @var AuditsConfig
 	 */
 	protected $config;
 
 	/**
 	 * Instance of the test model
 	 *
-	 * @var Tests\Support\Models\WidgetModel
+	 * @var WidgetModel
 	 */
 	protected $model;
 
 	/**
 	 * Instance of the fabricator primed with our model
 	 *
-	 * @var CodeIgniter\Test\Fabricator
+	 * @var Fabricator
 	 */
 	protected $fabricator;
 
@@ -57,8 +58,6 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	 * Asserts that an audit with the given properties is in the queue
 	 *
 	 * @param array $values  Array of values to confirm
-	 *
-	 * @return self
 	 */
 	public function seeAudit(array $values)
 	{

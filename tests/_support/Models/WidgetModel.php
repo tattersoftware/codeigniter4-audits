@@ -26,7 +26,7 @@ class WidgetModel extends Model
 	 *
 	 * @param Generator $faker
 	 *
-	 * @return stdClass
+	 * @return object
 	 */
 	public function fake(Generator &$faker): object
 	{

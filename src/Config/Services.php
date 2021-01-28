@@ -1,10 +1,18 @@
 <?php namespace Tatter\Audits\Config;
 
+use Config\Services as BaseServices;
 use Tatter\Audits\Audits;
+use Tatter\Audits\Config\Audits as AuditsConfig;
 
-class Services extends \Config\Services
+class Services extends BaseServices
 {
-    public static function audits(BaseConfig $config = null, bool $getShared = true)
+	/**
+	 * @param AuditsConfig|null $config
+	 * @param bool $getShared
+	 *
+	 * @return Audits
+	 */
+    public static function audits(AuditsConfig $config = null, bool $getShared = true): Audits
     {
 		if ($getShared)
 		{
