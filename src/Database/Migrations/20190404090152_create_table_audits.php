@@ -8,12 +8,12 @@ class Migration_create_table_audits extends Migration
 	{
 		// audit logs
 		$fields = [
-			'source'        => ['type' => 'VARCHAR', 'constraint' => 63],
-			'source_id'     => ['type' => 'INT', 'unsigned' => true],
-			'user_id'       => ['type' => 'INT', 'unsigned' => true, 'null' => true],
-			'event'         => ['type' => 'VARCHAR', 'constraint' => 31],
-			'summary'       => ['type' => 'VARCHAR', 'constraint' => 255],
-			'created_at'    => ['type' => 'DATETIME', 'null' => true],
+			'source'        => ['type' => 'varchar', 'constraint' => 63],
+			'source_id'     => ['type' => 'int', 'unsigned' => true],
+			'user_id'       => ['type' => 'int', 'unsigned' => true, 'null' => true],
+			'event'         => ['type' => 'varchar', 'constraint' => 31],
+			'summary'       => ['type' => 'varchar', 'constraint' => 255],
+			'created_at'    => ['type' => 'datetime', 'null' => true],
 		];
 		
 		$this->forge->addField('id');

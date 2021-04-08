@@ -1,14 +1,17 @@
 <?php namespace Tests\Support;
 
-use CodeIgniter\Test\CIDatabaseTestCase;
+use CodeIgniter\Test\CIUnitTestCase;
+use CodeIgniter\Test\DatabaseTestTrait;
 use CodeIgniter\Test\Fabricator;
 use Config\Services;
 use Tatter\Audits\Audits;
 use Tatter\Audits\Config\Audits as AuditsConfig;
 use Tests\Support\Models\WidgetModel;
 
-class DatabaseTestCase extends CIDatabaseTestCase
+class DatabaseTestCase extends CIUnitTestCase
 {
+	use DatabaseTestTrait;
+
 	/**
 	 * Should the database be refreshed before each test?
 	 *
@@ -41,7 +44,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	{
 		parent::setUp();
 
-		$config         = new \Tatter\Audits\Config\Audits();
+		$config         = new AuditsConfig();
 		$config->silent = false;
 		$this->config   = $config;
 		

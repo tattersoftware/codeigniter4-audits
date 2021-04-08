@@ -4,12 +4,6 @@ use Tests\Support\DatabaseTestCase;
 
 class TraitTest extends DatabaseTestCase
 {
-	public function setUp(): void
-	{
-		parent::setUp();
-
-	}
-
 	public function testInsertAddsAudit()
 	{
 		$widget = $this->fabricator->make();
