@@ -1,4 +1,4 @@
-<?php namespace App\Entities;
+<?php namespace Tatter\Audits\Entities;
 
 use CodeIgniter\Entity;
 
