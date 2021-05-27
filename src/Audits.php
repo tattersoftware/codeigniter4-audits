@@ -34,12 +34,14 @@ class Audits
 	 * Checks the session for a logged in user based on config
 	 *
 	 * @return int  The current user ID, 0 for "not logged in", -1 for CLI
+	 *
+	 * @deprecated This will be removed in the next major release; use codeigniter4/authentication-implementation
 	 */
 	public function sessionUserId(): int
 	{
 		if (is_cli())
 		{
-			return -1;
+			return 0;
 		}
 
 		return session($this->config->sessionUserId) ?? 0;

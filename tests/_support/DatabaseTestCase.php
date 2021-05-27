@@ -70,17 +70,22 @@ class DatabaseTestCase extends CIUnitTestCase
 		// Check each audit in the queue for a match
 		foreach ($queue as $audit)
 		{
+			$found = true;
+
 			// Check each value against the audit
 			foreach ($values as $key => $value)
 			{
 				if ($audit[$key] != $value)
 				{
-					break 2;
+					$found = false;
+					break;
 				}
 			}
 
-			$found = true;
-			break;
+			if ($found)
+			{
+				break;
+			}
 		}
 
 		$this->assertTrue($found, 'Audit not found in queue: ' . print_r($values, true));
