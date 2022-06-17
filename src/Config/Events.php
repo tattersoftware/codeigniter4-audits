@@ -1,7 +1,9 @@
-<?php namespace Tatter\Audits\Config;
+<?php
+
+namespace Tatter\Audits\Config;
 
 use CodeIgniter\Events\Events;
 
-Events::on('post_system', function () {
-	service('audits')->save();
+Events::on('post_system', static function () {
+    service('audits')->save();
 });

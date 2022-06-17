@@ -1,50 +1,46 @@
-<?php namespace Tests\Support\Models;
+<?php
 
-use Tatter\Audits\Traits\AuditsTrait;
+namespace Tests\Support\Models;
+
 use CodeIgniter\Model;
 use Faker\Generator;
+use Tatter\Audits\Traits\AuditsTrait;
 
 class WidgetModel extends Model
 {
-	use AuditsTrait;
+    use AuditsTrait;
 
-	protected $table      = 'widgets';
-	protected $primaryKey = 'id';
-	protected $returnType = 'object';
+    protected $table          = 'widgets';
+    protected $primaryKey     = 'id';
+    protected $returnType     = 'object';
+    protected $useTimestamps  = true;
+    protected $useSoftDeletes = true;
+    protected $skipValidation = true;
+    protected $allowedFields  = ['name', 'uid', 'summary'];
+    protected $afterInsert    = ['auditInsert'];
+    protected $afterUpdate    = ['auditUpdate'];
+    protected $afterDelete    = ['auditDelete'];
 
-	protected $useTimestamps  = true;
-	protected $useSoftDeletes = true;
-	protected $skipValidation = true;
+    /**
+     * Faked data for Fabricator.
+     */
+    public function fake(Generator &$faker): object
+    {
+        return (object) [
+            'name'    => $faker->catchPhrase,
+            'uid'     => $faker->word,
+            'summary' => $faker->sentence,
+        ];
+    }
 
-	protected $allowedFields = ['name', 'uid', 'summary'];
+    /**
+     * Toggle an event callback
+     */
+    public function useEvent(string $event, bool $active = true): self
+    {
+        $target          = 'after' . $event;
+        $this->{$target} = $active ? ['audit' . $event] : [];
 
-	protected $afterInsert = ['auditInsert'];
-	protected $afterUpdate = ['auditUpdate'];
-	protected $afterDelete = ['auditDelete'];
-
-	/**
-	 * Faked data for Fabricator.
-	 *
-	 *
-	 */
-	public function fake(Generator &$faker): object
-	{
-		return (object) [
-			'name'    => $faker->catchPhrase,
-			'uid'     => $faker->word,
-			'summary' => $faker->sentence,
-		];
-	}
-
-	/**
-	 * Toggle an event callback
-	 *
-	 *
-	 */
-	public function useEvent(string $event, bool $active = true): self
-	{
-		$target        = 'after' . $event;
-		$this->$target = $active ? ['audit' . $event] : [];
-		return $this;
-	}
+        return $this;
+    }
 }

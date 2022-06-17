@@ -1,15 +1,16 @@
-<?php namespace Tatter\Audits\Entities;
+<?php
+
+namespace Tatter\Audits\Entities;
 
 use CodeIgniter\Entity\Entity;
 
 class Audit extends Entity
 {
-	protected $table      = 'audits';
-	protected $primaryKey = 'id';
-
-	protected $dates = ['created_at'];
-	protected $casts = [
-		'source_id' => 'int',
-		'user_id'   => 'int',
-	];
+    protected $table      = 'audits';
+    protected $primaryKey = 'id';
+    protected $dates      = ['created_at'];
+    protected $casts      = [
+        'source_id' => 'int',
+        'user_id'   => 'int',
+    ];
 }
