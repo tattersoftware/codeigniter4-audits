@@ -49,8 +49,6 @@ class Audits
 
 	/**
 	 * Return the current queue (mostly for testing)
-	 *
-	 * @return array
 	 */
 	public function getQueue(): array
 	{

@@ -1,11 +1,12 @@
 <?php namespace Tests\Support\Models;
 
+use Tatter\Audits\Traits\AuditsTrait;
 use CodeIgniter\Model;
 use Faker\Generator;
 
 class WidgetModel extends Model
 {
-	use \Tatter\Audits\Traits\AuditsTrait;
+	use AuditsTrait;
 
 	protected $table      = 'widgets';
 	protected $primaryKey = 'id';
@@ -24,9 +25,7 @@ class WidgetModel extends Model
 	/**
 	 * Faked data for Fabricator.
 	 *
-	 * @param Generator $faker
 	 *
-	 * @return object
 	 */
 	public function fake(Generator &$faker): object
 	{
@@ -40,10 +39,7 @@ class WidgetModel extends Model
 	/**
 	 * Toggle an event callback
 	 *
-	 * @param string $event
-	 * @param bool $active
 	 *
-	 * @return self
 	 */
 	public function useEvent(string $event, bool $active = true): self
 	{

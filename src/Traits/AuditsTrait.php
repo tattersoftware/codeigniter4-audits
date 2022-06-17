@@ -12,9 +12,7 @@ trait AuditsTrait
 	 * Optionally filter by $events
 	 * (string or array of strings).
 	 *
-	 * @param array $objects
 	 * @param array|string|null $events
-	 *
 	 * @internal Due to a typo this function has never worked in a released version.
 	 *           It will be refactored soon without announcing a new major release
 	 *           so do not build on the signature or functionality.
