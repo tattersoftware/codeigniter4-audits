@@ -1,6 +1,6 @@
 <?php namespace Tatter\Audits\Entities;
 
-use CodeIgniter\Entity;
+use CodeIgniter\Entity\Entity;
 
 class Audit extends Entity
 {

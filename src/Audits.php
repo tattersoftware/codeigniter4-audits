@@ -70,7 +70,7 @@ class Audits
 		}
 
 		// Add common data
-		$audit['user_id']    = $this->sessionUserId();
+		$audit['user_id']    = $this->sessionUserId(); // @phpstan-ignore-line
 		$audit['created_at'] = date('Y-m-d H:i:s');
 
 		$this->queue[] = $audit;

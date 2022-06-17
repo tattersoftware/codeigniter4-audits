@@ -30,7 +30,7 @@ trait AuditsTrait
 		$objectIds = array_column($objects, $this->primaryKey);
 
 		// Start the query
-		$query = model(AuditModel::class)->where('source', $this->table)->whereIn('source_id', $objectIds);
+		$query = model(AuditModel::class)->builder()->where('source', $this->table)->whereIn('source_id', $objectIds);
 
 		if (is_string($events))
 		{
@@ -43,6 +43,7 @@ trait AuditsTrait
 		
 		// Index by objectId, event
 		$array = [];
+		// @phpstan-ignore-next-line
 		while ($audit = $query->getUnbufferedRow())
 		{
 			if (empty($array[$audit->{$this->primaryKey}]))
