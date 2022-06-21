@@ -62,6 +62,13 @@ abstract class DatabaseTestCase extends CIUnitTestCase
         $this->fabricator = new Fabricator($this->model);
     }
 
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        $this->resetServices();
+    }
+
     /**
      * Asserts that an audit with the given properties is in the queue
      *
