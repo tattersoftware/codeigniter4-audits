@@ -76,13 +76,15 @@ trait AuditsTrait
     // record successful update events
     protected function auditUpdate(array $data)
     {
-        $audit = [
-            'source'    => $this->table,
-            'source_id' => $data['id'],
-            'event'     => 'update',
-            'summary'   => count($data['data']) . ' fields',
-        ];
-        service('audits')->add($audit);
+        foreach ($data['id'] as $sourceId) {
+            $audit = [
+                'source'    => $this->table,
+                'source_id' => $sourceId,
+                'event'     => 'update',
+                'summary'   => count($data['data']) . ' fields',
+            ];
+            service('audits')->add($audit);
+        }
 
         return $data;
     }
